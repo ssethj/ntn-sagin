@@ -32,6 +32,12 @@ class HstMobilityModel : public MobilityModel
     HstMobilityModel();
     ~HstMobilityModel() override = default;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<HstMobilityModel>(*this);
+    }
+
     /// Install a trace. The model retains a copy of the trace's metadata
     /// (speed, dmin, cellSpacing) and uses sample list for interpolation.
     void SetTrace(const HstTrace& trace);

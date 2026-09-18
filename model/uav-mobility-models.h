@@ -31,6 +31,12 @@ class UavWaypointMobilityModel : public MobilityModel
     UavWaypointMobilityModel();
     ~UavWaypointMobilityModel() override;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<UavWaypointMobilityModel>(*this);
+    }
+
     void SetBox(const Box& box);
 
   private:
@@ -70,6 +76,12 @@ class UavPatrolMobilityModel : public MobilityModel
     UavPatrolMobilityModel();
     ~UavPatrolMobilityModel() override;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<UavPatrolMobilityModel>(*this);
+    }
+
     void SetEndpoints(const Vector& a, const Vector& b);
     /// Distance (m) the UAV has flown along its current leg, useful for tests.
     double GetLegProgressM() const;
@@ -108,6 +120,12 @@ class UavSearchPatternMobilityModel : public MobilityModel
     static TypeId GetTypeId();
     UavSearchPatternMobilityModel();
     ~UavSearchPatternMobilityModel() override;
+
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<UavSearchPatternMobilityModel>(*this);
+    }
 
     void SetSearchArea(const Vector& origin, double legLengthM, double stripWidthM,
                        int nStrips, double altitudeM);

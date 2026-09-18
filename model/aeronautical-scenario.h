@@ -23,6 +23,12 @@ class AeronauticalMobilityModel : public MobilityModel
     AeronauticalMobilityModel();
     ~AeronauticalMobilityModel() override;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<AeronauticalMobilityModel>(*this);
+    }
+
     void SetFlightPlan(const Vector& departure, const Vector& arrival,
                        double cruiseAltitudeM, double cruiseSpeedMps);
 

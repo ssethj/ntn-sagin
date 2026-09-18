@@ -37,6 +37,12 @@ class OpenSkyMobilityModel : public MobilityModel
     OpenSkyMobilityModel();
     ~OpenSkyMobilityModel() override = default;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<OpenSkyMobilityModel>(*this);
+    }
+
     /// Install a trace. The model retains a copy.
     void SetTrace(const OpenSkyAdsbTrace& trace);
 

@@ -39,6 +39,12 @@ class HapsMobilityModel : public MobilityModel
     HapsMobilityModel();
     ~HapsMobilityModel() override;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<HapsMobilityModel>(*this);
+    }
+
     /// Set the (lat, lon) anchor point converted to an ECEF-like local frame.
     void SetCenter(const Vector& centerXyz);
     Vector GetCenter() const;

@@ -32,6 +32,12 @@ class AisMobilityModel : public MobilityModel
     AisMobilityModel();
     ~AisMobilityModel() override = default;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<AisMobilityModel>(*this);
+    }
+
     void SetTrace(const AisMaritimeTrace& trace);
     void SetReference(double lat_deg, double lon_deg);
     void SetTraceTimeOffsetSeconds(double t_offset_s);

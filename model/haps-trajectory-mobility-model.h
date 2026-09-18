@@ -28,6 +28,12 @@ class HapsTrajectoryMobilityModel : public MobilityModel
     HapsTrajectoryMobilityModel();
     ~HapsTrajectoryMobilityModel() override = default;
 
+    // Inherited from MobilityModel
+    Ptr<MobilityModel> Copy() const override
+    {
+        return CreateObject<HapsTrajectoryMobilityModel>(*this);
+    }
+
     void SetTrace(const HapsTrajectoryTrace& trace);
     void SetReference(double lat_deg, double lon_deg, double alt_m);
     void SetTraceTimeOffsetSeconds(double t_offset_s);
